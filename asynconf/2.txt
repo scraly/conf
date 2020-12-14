@@ -1,0 +1,1 @@
+SELECTED_EMOJI=${EMOJIS[$(( ( RANDOM % ${#EMOJIS[@]} ) ))]};

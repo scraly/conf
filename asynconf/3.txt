@@ -1,0 +1,11 @@
+## Usage
+n=$'\n'
+usage="Display seasonal emoji randomly just before resources name.${n}${n}Usage:${n}   kubectl season KIND${n}${n}Examples:${n}   kubectl season pod${n}   kubectl season pod,svc${n}   kubectl season deploy -A"
+
+# MAIN
+# Usage
+if [[ "$1" == "" || "$1" == "-h" || "$1" == "--help" ]]
+then
+    echo "$usage" 
+    exit 1
+fi
