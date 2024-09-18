@@ -1,0 +1,81 @@
+{
+  "01 season": {
+    "body": [
+      "NOW=`date +%m`",
+      "",
+      "case $NOW in",
+      "",
+      "  01|02|03)",
+      "    EMOJIS=(🥶 🥨 🏂 🌲 ❄️ ☃️ 🎿 🧤 ☔)",
+      "    ;;",
+      "",
+      "  04|05)",
+      "    EMOJIS=(🐇 🐣 🍫 🥚 🔔 🧺 🌼 🐝)",
+      "    ;;",
+      "",
+      "  06|07|08)",
+      "    EMOJIS=(😎 🏄 🏊 🌴 🍹 ☀️ 👕 🥵)",
+      "    ;;",
+      "",
+      "  09)",
+      "    EMOJIS=(🎒 🖋️ 🚌 🏫 📚 👨‍🎓 ✂️ 📐)",
+      "    ;;",
+      "",
+      "  10)",
+      "    EMOJIS=(🎃 👻 🧟 🧛 🕷 🧙 💀 ☠ 😈)",
+      "    ;;",
+      "",
+      "  11)",
+      "    EMOJIS=(🍂 🍊 🌰 🥮 🥧 ☕ 🎃)",
+      "    ;;",
+      "",
+      "  12)",
+      "    EMOJIS=(🎄 🎁 🎅 🦌 🍪 ☃️ ❄️ 🌟 🤶)",
+      "    ;;",
+      "",
+      "esac",
+      ""
+    ],
+    "description": "",
+    "prefix": "01-season",
+    "scope": "shellscript"
+  },
+  "02 season": {
+    "body": [
+      "SELECTED_EMOJI=${EMOJIS[$(( ( RANDOM % ${#EMOJIS[@]} ) ))]};",
+      ""
+    ],
+    "description": "",
+    "prefix": "02-season",
+    "scope": "shellscript"
+  },
+  "03 season": {
+    "body": [
+      "## Usage",
+      "n=$'\\n'",
+      "usage=\"Display seasonal emoji randomly just before resources name.${n}${n}Usage:${n}   kubectl season KIND${n}${n}Examples:${n}   kubectl season pod${n}   kubectl season pod,svc${n}   kubectl season deploy -A\"",
+      "",
+      "# MAIN",
+      "# Usage",
+      "if [[ \"$1\" == \"\" || \"$1\" == \"-h\" || \"$1\" == \"--help\" ]]",
+      "then",
+      "    echo \"$usage\" ",
+      "    exit 1",
+      "fi",
+      ""
+    ],
+    "description": "",
+    "prefix": "03-season",
+    "scope": "shellscript"
+  },
+  "04 season": {
+    "body": [
+      "# add an emoji at the beginning of the line except for blank line and line beginning by NAME",
+      "kubectl get \"$@\" | sed -E \"/^(NAME|$)/ ! s/^/${SELECTED_EMOJI} /\" | sed -E \"s/(NAME)/   NAME/\"",
+      ""
+    ],
+    "description": "",
+    "prefix": "04-season",
+    "scope": "shellscript"
+  }
+}
