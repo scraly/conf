@@ -3,7 +3,7 @@
     "body": [
       "NOW=`date +%m`",
       "",
-      "case $NOW in",
+      "case \\$NOW in",
       "",
       "  01|02|03)",
       "    EMOJIS=(🥶 🥨 🏂 🌲 ❄️ ☃️ 🎿 🧤 ☔)",
@@ -42,7 +42,7 @@
   },
   "02 season": {
     "body": [
-      "SELECTED_EMOJI=${EMOJIS[$(( ( RANDOM % ${#EMOJIS[@]} ) ))]};",
+      "SELECTED_EMOJI=\\${EMOJIS[\\$(( ( RANDOM % \\${#EMOJIS[@]} ) ))]};",
       ""
     ],
     "description": "",
@@ -52,14 +52,14 @@
   "03 season": {
     "body": [
       "## Usage",
-      "n=$'\\n'",
-      "usage=\"Display seasonal emoji randomly just before resources name.${n}${n}Usage:${n}   kubectl season KIND${n}${n}Examples:${n}   kubectl season pod${n}   kubectl season pod,svc${n}   kubectl season deploy -A\"",
+      "n=\\$'\\n'",
+      "usage=\"Display seasonal emoji randomly just before resources name.\\${n}\\${n}Usage:\\${n}   kubectl season KIND\\${n}\\${n}Examples:\\${n}   kubectl season pod\\${n}   kubectl season pod,svc\\${n}   kubectl season deploy -A\"",
       "",
       "# MAIN",
       "# Usage",
-      "if [[ \"$1\" == \"\" || \"$1\" == \"-h\" || \"$1\" == \"--help\" ]]",
+      "if [[ \"\\$1\" == \"\" || \"\\$1\" == \"-h\" || \"\\$1\" == \"--help\" ]]",
       "then",
-      "    echo \"$usage\" ",
+      "    echo \"\\$usage\" ",
       "    exit 1",
       "fi",
       ""
@@ -71,7 +71,7 @@
   "04 season": {
     "body": [
       "# add an emoji at the beginning of the line except for blank line and line beginning by NAME",
-      "kubectl get \"$@\" | sed -E \"/^(NAME|$)/ ! s/^/${SELECTED_EMOJI} /\" | sed -E \"s/(NAME)/   NAME/\"",
+      "kubectl get \"\\$@\" | sed -E \"/^(NAME|\\$)/ ! s/^/\\${SELECTED_EMOJI} /\" | sed -E \"s/(NAME)/   NAME/\"",
       ""
     ],
     "description": "",
