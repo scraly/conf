@@ -78,3 +78,5 @@ fi
 
 # add an emoji at the beginning of the line except for blank line and line beginning by NAME
 kubectl get "$@" | sed -E "/^(NAME|$)/ ! s/^/${SELECTED_EMOJI} /"
+
+#cp kubectl-season ~/bin/kubectl-season
